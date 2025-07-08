@@ -4,7 +4,7 @@ This document outlines the complete, end-to-end workflow for developing large-sc
 
 ---
 
-## Phase 0: Project Kickstart & Onboarding
+## Phase 0: Project Onboarding & Analysis
 
 **Goal:** To align the AI agent with the project's existing structure, standards, and history.
 

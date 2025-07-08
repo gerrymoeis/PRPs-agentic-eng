@@ -40,4 +40,25 @@ This document outlines the complete, end-to-end workflow for developing large-sc
 1.  **Pull Request & CI/CD:** The agent opens a Pull Request from the feature branch to `develop`. This triggers a CI/CD pipeline that runs all tests automatically.
 2.  **Release Management:** Following the Git workflow, the feature is promoted to `main` via a `release/*` branch.
 3.  **Deployment & Rollback:** The agent follows the deployment and rollback plans outlined in the PRP.
-4.  **Documentation Update:** The agent updates the project's `decisions_and_changes_log.md` with a summary of the changes, linking to the ADD and PRP for full context. This ensures the project's knowledge base stays current.
+4.  **Documentation Update:** The agent updates the project's `decisions_and_changes_log.md` and `STATE_OF_THE_PROJECT.md` with a summary of the changes, linking to the ADD and PRP for full context. This ensures the project's knowledge base stays current.
+
+---
+
+## Phase 4: State Management & Recovery
+
+**Goal:** To ensure the development process is resilient to AI context drift and can recover from catastrophic context loss.
+
+This phase runs concurrently with all others and is governed by the principle that **the project's state lives in version control, not the chat history.**
+
+1.  **Continuous State Tracking:**
+    - The agent is responsible for keeping the `STATE_OF_THE_PROJECT.md` file meticulously up-to-date after every significant action.
+
+2.  **Course-Correction Protocol:**
+    - If the agent deviates from the plan, the user can issue the command **"Cascade, re-synchronize."**
+    - This instructs the agent to re-read the `STATE_OF_THE_PROJECT.md` and the active PRP to get back on track.
+
+3.  **Disaster Recovery Protocol:**
+    - In the event of a new chat session, the user will initiate the process using the `TEMPLATES/RESUME_PROJECT_PROMPT_TEMPLATE.md`.
+    - This allows a new agent instance to quickly onboard itself using the state file and resume work exactly where the previous session left off.
+
+*For full details on these protocols, see `GUIDES/RECOVERY_AND_CORRECTION.md`.*
